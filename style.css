@@ -1,0 +1,74 @@
+/* Bin Delete — github.com/veraetogrex-portfolio · zero dependencies */
+:root {
+  --bg: #07080c;
+  --text: #f2f3f7;
+  --text-2: #a4a7b6;
+  --text-3: #7f8293;
+  --line: rgba(255, 255, 255, .08);
+  --line-2: rgba(255, 255, 255, .14);
+  --danger: #ff7a45;
+  --danger-2: #ff6fb5;
+  --ion: #3fe0d0;
+  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --display: var(--font);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; display: grid; place-items: center; overflow: hidden;
+  background: radial-gradient(65% 60% at 50% 50%, #0e1018, var(--bg) 72%);
+  color: var(--text); font: 16px/1.4 var(--font);
+}
+h1, p { margin: 0; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+.bd {
+  position: relative; width: 820px; height: 600px; border-radius: 28px; text-align: center; padding-top: 58px;
+  background: linear-gradient(#12141d, #0d0e15);
+  box-shadow: 0 0 0 1px var(--line) inset, 0 1px 0 rgba(255, 255, 255, .08) inset, 0 60px 120px -40px rgba(0, 0, 0, .85);
+}
+@media (max-width: 880px) { .bd { zoom: .6; } }
+@media (max-width: 560px) { .bd { zoom: .42; } }
+
+.bd-kicker { font: 500 15px var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--danger); }
+.bd-title { margin-top: 16px; font: 600 52px/1.05 var(--font); letter-spacing: -.025em; }
+.bd-what { margin-top: 16px; font: 400 22px var(--font); color: var(--text-2); }
+.bd-what b { font: 500 21px var(--mono); color: var(--text); }
+
+/* ── the button ─────────────────────────────────────── */
+.bd-stage { position: absolute; left: 0; right: 0; top: 268px; height: 176px; }
+.bd-btn {
+  position: absolute; left: 50%; top: 50%; height: 128px; transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 22px; padding: 0 52px 0 40px; border-radius: 999px; overflow: visible; white-space: nowrap;
+  color: #fff; background: linear-gradient(120deg, var(--danger), var(--danger-2));
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .18) inset, 0 18px 50px -14px rgba(255, 122, 69, .8);
+  transition: width .44s cubic-bezier(.65, 0, .35, 1), padding .44s cubic-bezier(.65, 0, .35, 1), box-shadow .3s, filter .2s;
+}
+.bd-btn:hover { filter: brightness(1.08); }
+.bd-btn:focus-visible { outline: 3px solid #fff; outline-offset: 6px; }
+.bd-btn.is-round { padding: 0 32px; }
+.bd-label { font: 600 58px/1 var(--font); letter-spacing: -.02em; display: flex; }
+.bd-label i { display: inline-block; font-style: normal; will-change: transform, opacity; }
+.bd-bin { flex: none; width: 64px; height: 64px; overflow: visible; fill: none; stroke: #fff; stroke-width: 4.4; stroke-linecap: round; stroke-linejoin: round; }
+.bd-lid { transform-origin: 11px 17px; transition: transform .26s cubic-bezier(.34, 1.56, .64, 1); }
+.bd-btn:hover .bd-lid { transform: rotate(-14deg); }
+.bd-btn.is-open .bd-lid { transform: rotate(-38deg) translate(-2px, -4px); }
+.bd-trash { opacity: 0; transition: opacity .2s; }
+.bd-btn.is-full .bd-trash { opacity: 1; }
+
+/* the undo window: a ring that closes around the bin */
+.bd-ring { position: absolute; left: 50%; top: 0; width: 176px; height: 176px; margin-left: -88px; transform: rotate(-90deg); overflow: visible; opacity: 0; transition: opacity .2s; }
+.bd-ring circle { fill: none; stroke: var(--danger); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; filter: drop-shadow(0 0 8px rgba(255, 122, 69, .6)); }
+.bd-ring.is-on { opacity: 1; }
+
+.bd-toast {
+  position: absolute; left: 50%; top: 482px; transform: translateX(-50%); display: flex; align-items: center; gap: 20px; height: 64px; padding: 0 10px 0 28px;
+  border-radius: 999px; background: #1a1b24; box-shadow: 0 0 0 1px var(--line-2) inset, 0 20px 50px -20px #000; font: 500 21px var(--font); white-space: nowrap;
+}
+.bd-toast[hidden] { display: none; }
+.bd-undo { height: 46px; padding: 0 24px; border-radius: 999px; font: 600 20px var(--font); color: #05221f; background: var(--ion); }
+.bd-undo:hover { filter: brightness(1.1); }
+.bd.is-gone .bd-title { color: var(--text-3); text-decoration: line-through; text-decoration-color: var(--danger); }
+
+@media (prefers-reduced-motion: reduce) { .bd-btn, .bd-lid { transition-duration: .15s; } }

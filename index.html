@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bin Delete — veraetogrex_portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Bin Delete · zero dependencies · github.com/veraetogrex-portfolio -->
+  <section class="bd" id="danger" aria-labelledby="bd-title">
+    <p class="bd-kicker">Danger zone</p>
+    <h1 class="bd-title" id="bd-title">Delete project?</h1>
+    <p class="bd-what"><b>nwd-onboarding</b> · 24 files · 3 collaborators</p>
+
+    <div class="bd-stage">
+      <svg class="bd-ring" viewBox="0 0 176 176" aria-hidden="true"><circle cx="88" cy="88" r="80" pathLength="100"/></svg>
+      <button class="bd-btn" aria-label="Delete project">
+        <svg class="bd-bin" viewBox="0 0 64 64" aria-hidden="true">
+          <g class="bd-lid"><path d="M10 17h44"/><path d="M25 17v-5h14v5"/></g>
+          <path class="bd-can" d="M15 23l3.5 31a4 4 0 0 0 4 3.5h19a4 4 0 0 0 4-3.5L49 23"/>
+          <g class="bd-trash"><path d="M24 44h16M23 37h18"/></g>
+        </svg>
+        <span class="bd-label" aria-hidden="true">Delete</span>
+      </button>
+    </div>
+
+    <div class="bd-toast" role="status" hidden>
+      <span>Project deleted</span><button class="bd-undo">Undo</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
